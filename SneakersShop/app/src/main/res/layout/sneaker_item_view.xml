@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/book_item"
+    android:layout_weight="0.3"
+    android:paddingHorizontal="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="6dp"
+    android:elevation="10dp"
+    android:outlineSpotShadowColor="@color/black"
+    cardview:cardCornerRadius="20dp"
+
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_for_ui">
+
+        <ImageView
+            android:id="@+id/Sneaker_photo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/yezzy700"
+            cardview:layout_constraintBottom_toBottomOf="parent"
+            cardview:layout_constraintEnd_toStartOf="@+id/guideline10"
+            cardview:layout_constraintStart_toStartOf="parent"
+            cardview:layout_constraintTop_toTopOf="parent"
+            cardview:layout_constraintVertical_bias="0.482" />
+
+        <TextView
+            android:id="@+id/sneaker_name_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="textStart"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            cardview:layout_constraintBottom_toTopOf="@+id/sneaker_price_id"
+            cardview:layout_constraintEnd_toStartOf="@+id/guideline12"
+            cardview:layout_constraintHorizontal_bias="0.5"
+            cardview:layout_constraintStart_toStartOf="@+id/guideline10"
+            cardview:layout_constraintTop_toTopOf="parent"
+            cardview:layout_constraintVertical_bias="0.103"
+            cardview:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/sneaker_price_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/forbuttons"
+            android:text="Price"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            cardview:layout_constraintBottom_toTopOf="@+id/textView"
+            cardview:layout_constraintEnd_toStartOf="@+id/imageView6"
+            cardview:layout_constraintTop_toBottomOf="@+id/sneaker_name_id"
+            cardview:layout_constraintVertical_bias="0.135" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            cardview:layout_constraintGuide_begin="173dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="40-46"
+            android:textColor="@color/white"
+            android:background="@drawable/forbuttons"
+            cardview:layout_constraintBottom_toTopOf="@+id/textView3"
+            cardview:layout_constraintEnd_toStartOf="@+id/guideline12"
+            cardview:layout_constraintTop_toBottomOf="@+id/sneaker_price_id" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Առկա Է"
+            android:textColor="#6AE612"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            cardview:layout_constraintBottom_toBottomOf="parent"
+            cardview:layout_constraintEnd_toStartOf="@+id/guideline12"
+            cardview:layout_constraintHorizontal_bias="0.5"
+            cardview:layout_constraintStart_toStartOf="@+id/guideline10"
+            cardview:layout_constraintTop_toBottomOf="@+id/textView"
+            cardview:layout_constraintVertical_bias="0.543" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            cardview:layout_constraintGuide_begin="210dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            cardview:layout_constraintGuide_percent="0.95771146" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            cardview:layout_constraintBottom_toTopOf="@+id/textView"
+            cardview:layout_constraintEnd_toStartOf="@+id/guideline12"
+            cardview:layout_constraintTop_toBottomOf="@+id/sneaker_name_id"
+            cardview:layout_constraintVertical_bias="0.294"
+            cardview:srcCompat="@drawable/dramlogo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

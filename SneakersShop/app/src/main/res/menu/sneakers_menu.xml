@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Հիմնական"
+          android:icon="@drawable/ic_home"
+          android:id="@+id/mwsnfragment"
+        />
+    <item android:title="Հավանած"
+        android:icon="@drawable/ic_favor"
+          android:id="@+id/myFavoriteFragment"/>
+    <item android:title="իմ Էջ"
+        android:icon="@drawable/ic_person"
+        android:id="@+id/userPageFragment"/>
+</menu>

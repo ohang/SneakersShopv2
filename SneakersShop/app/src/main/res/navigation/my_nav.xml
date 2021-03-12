@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.onboarding.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_bottomNavFragment"
+            app:destination="@id/bottomNavFragment"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_bottomNavFragment"
+            app:destination="@id/bottomNavFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/sneakersListFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.sneakerslist.SneakListFrgmt"
+        android:label="fragment_sneakers_list"
+        tools:layout="@layout/fragment_sneakers_list" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_bottomNavFragment"
+            app:destination="@id/bottomNavFragment"
+            app:popUpTo="@id/registrationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/bottomNavFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.sneakerslist.BottomNavFragment"
+        android:label="fragment_bottom_nav"
+        tools:layout="@layout/fragment_bottom_nav" >
+        <action
+            android:id="@+id/action_bottomNavFragment_to_sneakerPageFragment"
+            app:destination="@id/sneakerPageFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.ohanyan.goro.sneakersshop.db.User" />
+        <action
+            android:id="@+id/action_bottomNavFragment_to_myFavoriteFragment2"
+            app:destination="@id/myFavoriteFragment2" />
+        <action
+            android:id="@+id/action_bottomNavFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_bottomNavFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sneakerPageFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.SneakerPageFragment"
+        android:label="fragment_sneaker_page"
+        tools:layout="@layout/fragment_sneaker_page" >
+        <argument
+            android:name="sneak"
+            app:argType="com.ohanyan.goro.sneakersshop.db.Sneaker" />
+        <action
+            android:id="@+id/action_sneakerPageFragment_to_bottomNavFragment"
+            app:destination="@id/bottomNavFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myFavoriteFragment2"
+        android:name="com.ohanyan.goro.sneakersshop.ui.sneakerslist.MyFavoriteFragment"
+        android:label="fragment_my_favorite"
+        tools:layout="@layout/fragment_my_favorite" />
+</navigation>
