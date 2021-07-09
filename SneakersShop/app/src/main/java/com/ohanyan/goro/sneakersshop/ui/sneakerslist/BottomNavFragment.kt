@@ -1,26 +1,18 @@
 package com.ohanyan.goro.sneakersshop.ui.sneakerslist
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.createDataStore
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy.LOG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ohanyan.goro.sneakersshop.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
-class BottomNavFragment : Fragment() {
+class BottomNavFragment() : Fragment() {
 
     private val args by navArgs<BottomNavFragmentArgs>()
     val bundle = Bundle()
@@ -36,19 +28,49 @@ class BottomNavFragment : Fragment() {
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView)
 
 
-        setCurrentFragment(MWSneakersListFragment())
+
+        when(args.currentFragment){
+           1-> {
+               setCurrentFragment(MWSneakersListFragment())
+               bottomNavigationView.setSelectedItemId(R.id.mwsnfragment)
+           }
+            2-> {
+                setCurrentFragment(MyFavoriteFragment())
+                bottomNavigationView.setSelectedItemId(R.id.myFavoriteFragment)
+            }
+           3-> {
+               setCurrentFragment(UserPageFragment())
+               bottomNavigationView.setSelectedItemId(R.id.userPageFragment)
+
+           }
+
+
+       }
+
+
+
 
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
 
+
             when (it.itemId) {
-                R.id.myFavoriteFragment -> setCurrentFragment(MyFavoriteFragment())
-                R.id.userPageFragment -> setCurrentFragment(UserPageFragment())
-                R.id.mwsnfragment -> setCurrentFragment(MWSneakersListFragment())
-            }
+                R.id.myFavoriteFragment -> {
+                    setCurrentFragment(MyFavoriteFragment())
+                }
+                R.id.userPageFragment ->{
+
+                 setCurrentFragment(UserPageFragment())
+                }
+                R.id.mwsnfragment -> {
+                    setCurrentFragment(MWSneakersListFragment())
+                }}
             true
         }
+
+
+
         return view
     }
 
@@ -59,6 +81,7 @@ class BottomNavFragment : Fragment() {
             replace(R.id.NavHostMenu, fragment)
             commit()
         }
+
 
 
     }

@@ -11,6 +11,7 @@ data class User (
     @PrimaryKey(autoGenerate = true)
     var id:Int?=1,
     var name:String?="",
+    var surname:String?="",
     var adress:String?="",
     var postcode:String?="",
     var phonenumber:String?="",

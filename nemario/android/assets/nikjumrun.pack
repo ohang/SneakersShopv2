@@ -1,0 +1,26 @@
+
+jump1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+RUNNIKOL
+  rotate: false
+  xy: 2, 2
+  size: 2000, 350
+  orig: 2000, 350
+  offset: 0, 0
+  index: -1
+JUMPNIKOL
+  rotate: false
+  xy: 2, 354
+  size: 2000, 350
+  orig: 2000, 350
+  offset: 0, 0
+  index: -1
+NIKStand
+  rotate: false
+  xy: 2004, 2
+  size: 400, 350
+  orig: 400, 350
+  offset: 0, 0
+  index: -1

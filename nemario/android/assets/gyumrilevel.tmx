@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="100" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="4">
+ <tileset firstgid="1" source="Walking Platforms 8.tsx"/>
+ <tileset firstgid="2161" source="sky.tsx"/>
+ <layer id="1" name="Слой тайлов 1" width="100" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztlFsKgCAURO9nW+6xsXJVPRbQQEQhFCSpU87HgXMRdWTAvjIbgAO9PLuz5JAfffjs6wz5SnPncdWReuL5r/yeGHL/1Z/uUTdcfdztP8Pwti96rLPcS2eW5iw55OqD0VlyyDevzawBLegs7pzyrtA5d4YRTGAGS+Q55V2hc+4MK+ol0Ec=
+  </data>
+ </layer>
+ <objectgroup id="2" name="ground">
+  <object id="2" x="1" y="176" width="1600" height="33"/>
+  <object id="3" x="483" y="196"/>
+ </objectgroup>
+ <imagelayer id="3" name="church" offsetx="-30" offsety="-24">
+  <image source="1gm.png" width="300" height="200"/>
+ </imagelayer>
+</map>

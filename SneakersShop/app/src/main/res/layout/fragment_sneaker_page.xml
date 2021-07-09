@@ -16,21 +16,47 @@
         app:layout_constraintGuide_percent="0.5" />
 
 
-    <ImageView
+    <ToggleButton
+        android:id="@+id/likeButtonID"
+        style="@style/Widget.Button.Toggle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintBottom_toBottomOf="@+id/backButtonID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline39"
+        app:layout_constraintTop_toTopOf="@+id/backButtonID" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_indicator"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/mainImgid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/yezzy700"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
+    </androidx.viewpager.widget.ViewPager>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/logui"
@@ -48,58 +74,85 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/price_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
             android:text="28000 դրամ"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/name_id" />
+            app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
         <Button
             android:id="@+id/buybutton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="4dp"
             android:background="@drawable/forbuttons"
             android:text="Պատվիրել"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline22" />
 
         <TextView
             android:id="@+id/name_id"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/poppins_emibold"
+            android:gravity="center"
             android:text="Նոր Հավաքածու 2021 "
-            android:textColor="#676666"
-            android:textSize="17sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/nameConstId"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
 
         <RadioGroup
             android:id="@+id/radioGroupsizes"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/buybutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price_id">
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
 
             <RadioButton
-
-                android:id="@+id/size39"
+                android:id="@+id/size1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -110,7 +163,7 @@
                 android:textColor="@color/white" />
 
             <RadioButton
-                android:id="@+id/size40"
+                android:id="@+id/size2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -122,7 +175,7 @@
                 android:textColor="@color/white" />
 
             <RadioButton
-                android:id="@+id/size41"
+                android:id="@+id/size3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -133,7 +186,7 @@
                 android:textColor="@color/white" />
 
             <RadioButton
-                android:id="@+id/size42"
+                android:id="@+id/size4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -145,7 +198,7 @@
                 android:textColor="@color/white" />
 
             <RadioButton
-                android:id="@+id/size43"
+                android:id="@+id/size5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -153,11 +206,10 @@
                 android:button="@android:color/transparent"
                 android:text="43"
                 android:textAlignment="center"
-
                 android:textColor="@color/white" />
 
             <RadioButton
-                android:id="@+id/size44"
+                android:id="@+id/size6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -178,8 +230,8 @@
             android:text="Ընտրել չափսը՝"
             android:textColor="#676666"
             android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroupsizes"
-            app:layout_constraintStart_toStartOf="@+id/guideline15" />
+            app:layout_constraintStart_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toTopOf="@+id/guideline20" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline15"
@@ -192,10 +244,11 @@
             android:id="@+id/imageView5"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="56dp"
             android:src="@drawable/dramlogo"
+            app:layout_constraintBottom_toBottomOf="@+id/price_id"
             app:layout_constraintEnd_toStartOf="@+id/guideline16"
-            app:layout_constraintTop_toBottomOf="@+id/name_id" />
+            app:layout_constraintTop_toTopOf="@+id/price_id"
+            app:layout_constraintVertical_bias="0.423" />
 
         <TextView
             android:id="@+id/helptextid"
@@ -222,25 +275,21 @@
 
     <ImageButton
         android:id="@+id/backButtonID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="#00FFFFFF"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/backcircle"
+        android:padding="4dp"
         android:src="@drawable/circle"
+        app:layout_constraintBottom_toTopOf="@+id/guideline41"
+        app:layout_constraintEnd_toStartOf="@+id/guideline38"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
-    <ImageButton
-        android:id="@+id/likeButtonID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="#00FFFFFF"
-        android:src="@drawable/favxml"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline21"
@@ -248,6 +297,52 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.46" />
+
+    <TextView
+        android:id="@+id/slidetextid"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/slideshape"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="1/4"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+        app:layout_constraintEnd_toEndOf="@+id/mainImgid" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

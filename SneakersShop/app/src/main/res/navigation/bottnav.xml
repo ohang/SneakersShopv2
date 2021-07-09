@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottnav"
+    app:startDestination="@id/MWSneakersListFragment">
+    <fragment
+        android:id="@+id/MWSneakersListFragment"
+        android:name="com.ohanyan.goro.sneakersshop.ui.sneakerslist.MWSneakersListFragment"
+        android:label="fragment_m_w_sneakers_list"
+        tools:layout="@layout/fragment_m_w_sneakers_list" >
+        <action
+            android:id="@+id/action_MWSneakersListFragment_to_myFavoriteFragment3"
+            app:destination="@id/myFavoriteFragment3" />
+        <action
+            android:id="@+id/action_MWSneakersListFragment_to_userPageFragment2"
+            app:destination="@id/userPageFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPageFragment2"
+        android:name="com.ohanyan.goro.sneakersshop.ui.sneakerslist.UserPageFragment"
+        android:label="fragment_user_page"
+        tools:layout="@layout/fragment_user_page" />
+    <fragment
+        android:id="@+id/myFavoriteFragment3"
+        android:name="com.ohanyan.goro.sneakersshop.ui.sneakerslist.MyFavoriteFragment"
+        android:label="fragment_my_favorite"
+        tools:layout="@layout/fragment_my_favorite" >
+        <action
+            android:id="@+id/action_myFavoriteFragment3_to_userPageFragment2"
+            app:destination="@id/userPageFragment2" />
+    </fragment>
+</navigation>

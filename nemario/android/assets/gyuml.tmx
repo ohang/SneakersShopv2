@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="100" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="3">
+ <tileset firstgid="1" source="Walking Platforms 8.tsx"/>
+ <tileset firstgid="2161" source="sky.tsx"/>
+ <layer id="1" name="Слой тайлов 1" width="100" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztlllOxDAMhoc9ZW7Mbdi3E7AP9ARlh56g7NAL8FeaiCgTO/Y0keaBh0+RUzt2XNttZQaDKgNHAdYZNsAm2ALbYAfsgj2wDw7AYWBNjSaWaQmdY+UmE9Q76nPf0lmvxmtq7DvR1onGxwhcenew8lyRhyZB7n1qZ30er6kpDd3P0rvEfDyCJ+8OVl5G7laAAQVYBUPQGhr//BQ9Hsq9T+usP0x8fagjcebGfQc+qWcp18Oh3PvYOhkyMfeljcSZmxTfK6kvrodDuadwY/wAn+ALfJu/vnHP7ubnPFgAi2CpoOdCR445KOUMnIMLM/mdkeZa6oubE37Oj7F3Ak4jMU4zb2cZah5JZxWlp5l11P4NuAV34B48mMlvoeT8HHMtF1Qddv8Xkhql9KT2JbP/Ct7Au6HnkuR8TSxW5my0/5rSWdn5vybqsGKeuTVK6Unta2ZfcgfJ+ZpYrByz0eRH4//FhOuwYZ65NUrpSe1bZl9iK9HRxGLlmI0mPxr/VC9J+4zS0/QptS+xlehoYrFyzEaTH43/tcE/s8Qvdd5E5Q==
+  </data>
+ </layer>
+</map>

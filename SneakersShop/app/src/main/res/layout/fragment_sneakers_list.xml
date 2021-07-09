@@ -7,15 +7,30 @@
     tools:context=".ui.sneakerslist.SneakListFrgmt">
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sneakers_list_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layoutAnimation="@anim/layout_animation"
+        android:background="#F8F8F8"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/loadfr"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sneakers_list_id"
+        app:layout_constraintStart_toStartOf="@+id/sneakers_list_id"
         app:layout_constraintTop_toTopOf="parent" />
 
 

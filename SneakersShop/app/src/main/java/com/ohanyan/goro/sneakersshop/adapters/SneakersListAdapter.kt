@@ -8,10 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.ohanyan.goro.sneakersshop.R
 import com.ohanyan.goro.sneakersshop.db.Sneaker
 
-class SneakersListAdapter(var context: Context,private var onItemClickListener: OnItemClickListener):RecyclerView.Adapter<SneakersListAdapter.SneakerViewHolder>(){
+class SneakersListAdapter(var context:Context, options: FirestoreRecyclerOptions<Sneaker>,private var onItemClickListener:
+SneakersListAdapter.OnItemClickListener
+) : FirestoreRecyclerAdapter<Sneaker, SneakersListAdapter.SneakerViewHolder>(options){
     private var mySneakersList = emptyList<Sneaker>()
 
 
@@ -23,20 +27,16 @@ class SneakersListAdapter(var context: Context,private var onItemClickListener: 
         ),onItemClickListener)
     }
 
-    override fun getItemCount(): Int {
-       return mySneakersList.size
+    override fun onBindViewHolder(holder: SneakersListAdapter.SneakerViewHolder, position: Int, model: Sneaker) {
 
-    }
-
-    override fun onBindViewHolder(holder: SneakerViewHolder, position: Int) {
-        val currentSneaker=mySneakersList[position]
-        holder.bind(currentSneaker)
-
+        holder.bind(model)
 
 
     }
 
-    inner class SneakerViewHolder(itemview: View,private var onItemClickListener: OnItemClickListener)
+
+
+    inner class SneakerViewHolder(itemview: View,private var onItemClickListener: SneakersListAdapter.OnItemClickListener)
         :RecyclerView.ViewHolder(itemview){
 
         fun bind(item: Sneaker){
@@ -45,29 +45,35 @@ class SneakersListAdapter(var context: Context,private var onItemClickListener: 
 
             img=itemView.findViewById(R.id.snek_img_id)
             price=itemView.findViewById(R.id.price_id)
+            val newlist=item.mainImgUrl.split(",").toList()
 
             price.text=item.price+" դրամ"
 
             Glide
                 .with(context.applicationContext)
-                .load(item.mainImgUrl)
+                .load(newlist[0])
                 .into(img)
+
+
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(
                     item,itemView,adapterPosition)
 
             }
 
-            itemView.setOnLongClickListener{
+            itemView.setOnLongClickListener {
                 onItemClickListener.onItemLong(
                     item,itemView,adapterPosition
                 )
                 true
-
             }
+
+
         }
 
     }
+
+
 
     interface OnItemClickListener {
         fun onItemClick(item: Sneaker, view: View, position: Int)
@@ -79,4 +85,6 @@ class SneakersListAdapter(var context: Context,private var onItemClickListener: 
         this.mySneakersList = sneaker
         notifyDataSetChanged()
     }
+
+
 }

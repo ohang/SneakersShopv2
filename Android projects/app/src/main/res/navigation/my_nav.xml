@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/recycleFragment">
+
+    <fragment
+        android:id="@+id/recycleFragment"
+        android:name="com.ohanyan.goro.hayadaran.fragment.RecycleFragment"
+        android:label="Գրադարան"
+        tools:layout="@layout/fragment_recycle" >
+        <action
+            android:id="@+id/action_recycleFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
+        <argument
+            android:name="namesearch"
+            app:argType="string"
+            android:defaultValue="book"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_recycleFragment_self"
+            app:destination="@id/recycleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.ohanyan.goro.hayadaran.fragment.BookFragment"
+        android:label="Գիրք"
+        tools:layout="@layout/fragment_book" >
+        <action
+            android:id="@+id/action_bookFragment_to_recycleFragment"
+            app:destination="@id/recycleFragment" />
+        <argument
+            android:name="thisBook"
+            app:argType="com.ohanyan.goro.hayadaran.data.Book" />
+    </fragment>
+</navigation>

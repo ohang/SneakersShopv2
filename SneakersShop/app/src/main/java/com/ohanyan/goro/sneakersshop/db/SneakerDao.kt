@@ -13,6 +13,9 @@ interface SneakerDao {
     @Query("SELECT * FROM sneaker ORDER BY id ASC")
     fun readAllData(): LiveData<List<Sneaker>>
 
+    @Query("DELETE  FROM sneaker")
+     suspend fun deleteall()
+
 
 
 

@@ -1,0 +1,26 @@
+
+SRC FILES1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+run2d
+  rotate: false
+  xy: 2, 2
+  size: 1800, 350
+  orig: 1800, 350
+  offset: 0, 0
+  index: -1
+NIKJUMP
+  rotate: false
+  xy: 2, 354
+  size: 1800, 350
+  orig: 1800, 350
+  offset: 0, 0
+  index: -1
+NIKst
+  rotate: false
+  xy: 2, 706
+  size: 300, 350
+  orig: 300, 350
+  offset: 0, 0
+  index: -1

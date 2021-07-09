@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Հիմնական"
-          android:icon="@drawable/ic_home"
+    <item android:title="Բոթասներ"
+          android:icon="@drawable/ic_sneaker_shoes_svgrepo_com"
           android:id="@+id/mwsnfragment"
         />
     <item android:title="Հավանած"

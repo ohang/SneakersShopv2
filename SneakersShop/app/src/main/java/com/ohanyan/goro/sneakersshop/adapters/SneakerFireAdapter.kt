@@ -17,7 +17,8 @@ import com.ohanyan.goro.sneakersshop.db.Sneaker
 import kotlinx.coroutines.withContext
 
 
-class SneakerFireAdapter(var context:Context,options: FirestoreRecyclerOptions<Sneaker>,private var onItemClickListener: OnItemClickListener) : FirestoreRecyclerAdapter<Sneaker, SneakerFireAdapter.SneakViewHolder>(options) {
+class SneakerFireAdapter(var context:Context,options: FirestoreRecyclerOptions<Sneaker>,private var onItemClickListener:
+OnItemClickListener) : FirestoreRecyclerAdapter<Sneaker, SneakerFireAdapter.SneakViewHolder>(options) {
 
 
 
@@ -42,16 +43,18 @@ class SneakerFireAdapter(var context:Context,options: FirestoreRecyclerOptions<S
         RecyclerView.ViewHolder(itemView) {
 
         fun bind(model:Sneaker){
+
             val name: TextView
             val price : TextView
             val img:ImageView
             img =itemView.findViewById(R.id.Sneaker_photo)
             name=itemView.findViewById(R.id.sneaker_name_id)
             price=itemView.findViewById(R.id.sneaker_price_id)
+            val newlist=model.mainImgUrl.split(",").toList()
 
             Glide
                 .with(context.applicationContext)
-                .load(model.mainImgUrl)
+                .load(newlist[0])
                 .into(img)
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(
@@ -66,17 +69,11 @@ class SneakerFireAdapter(var context:Context,options: FirestoreRecyclerOptions<S
                 true
             }
 
-            itemView.setOnClickListener{
-              onItemClickListener.onItemClick(
-                  model,itemView,adapterPosition)
-
-            }
-
-
 
 
             name.text=model.name
             price.text=model.price
+
         }
 
 

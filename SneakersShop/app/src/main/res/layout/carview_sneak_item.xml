@@ -21,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/yezzy700"
             cardview:layout_constraintBottom_toTopOf="@+id/price_id"
             cardview:layout_constraintEnd_toEndOf="parent"
             cardview:layout_constraintHorizontal_bias="0.0"

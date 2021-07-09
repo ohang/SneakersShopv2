@@ -10,10 +10,11 @@ import kotlinx.android.parcel.Parcelize
 data class Sneaker(
     @PrimaryKey(autoGenerate = true)
     var id: Int?=1,
-    var price: String?="12000",
+    var price: String?="",
     var mainImgUrl:String="",
-    var description:String="",
-    var name: String?="Nikes"):Parcelable {
+    var sizes:String="",
+    var male:String="",
+    var name: String?=""):Parcelable {
 
 }
 

@@ -29,7 +29,7 @@ class MWSneakersListFragment : Fragment() {
         mwviewpager=view.findViewById(R.id.mwsnviewpager)
         val tb:TabLayout
         tb=view.findViewById(R.id.mwsntablayout)
-        val mwfragment= arrayListOf<Fragment>(SneakListFrgmt(),SneakListFrgmt())
+        val mwfragment= arrayListOf<Fragment>(SneakListFrgmt("Man"),SneakListFrgmt("Woman"))
 
         val adapter= ViewPagerAdapter(
             mwfragment,
@@ -39,12 +39,13 @@ class MWSneakersListFragment : Fragment() {
 
        mwviewpager.adapter=adapter
 
+
         TabLayoutMediator(tb,mwviewpager){tab,position->
 
         }.attach()
 
         tb.getTabAt(0)?.text="Տղսմարդու"
-        tb.getTabAt(1)?.text="Կանանցի"
+        tb.getTabAt(1)?.text="Կանացի"
 
 
 

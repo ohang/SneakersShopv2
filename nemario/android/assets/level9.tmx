@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="100" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+ <layer id="1" name="Слой тайлов 1" width="100" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztwYEAAAAAw6D5U1/hAFUBAAAAAHwGFFAAAQ==
+  </data>
+ </layer>
+ <imagelayer id="2" name="Слой изображений 1">
+  <image source="newtile.png" width="1600" height="208"/>
+ </imagelayer>
+</map>

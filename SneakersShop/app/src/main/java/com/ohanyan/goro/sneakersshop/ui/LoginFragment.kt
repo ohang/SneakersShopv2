@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
                 //"(?=.*[a-z])" +         //at least 1 lower case letter
                 //"(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
+              //  "(?=.*[@#$%^&+=])" +    //at least 1 special character
                 "(?=\\S+$)" +           //no white spaces
                 ".{4,}" +               //at least 4 characters
                 "$"
@@ -94,7 +94,10 @@ class LoginFragment : Fragment() {
             val emailinput = emailedit.editText?.text?.toString()
             val passinput = passedit.editText?.text?.toString()
 
-            if (validateEmail(emailedit) || validatePassword(passedit)) {
+            validateEmail(emailedit)
+            validatePassword(passedit)
+
+            if (validateEmail(emailedit) && validatePassword(passedit)) {
               logProgres.visibility=View.VISIBLE
                 CoroutineScope(Dispatchers.Main).launch {
 
@@ -109,23 +112,6 @@ class LoginFragment : Fragment() {
                     }
 
 
-
-
-                   /* CoroutineScope(Dispatchers.IO).launch {
-                        val emailquery = UserrColection.whereEqualTo("email", auth.currentUser?.email)
-                            .get().await()
-                        if (!emailquery.isEmpty()) {
-
-
-                            val user = emailquery.toObjects(User::class.java)[0]
-
-
-
-
-
-                        }
-
-                    */
 
 
                 }
@@ -153,7 +139,7 @@ class LoginFragment : Fragment() {
         val emailinput = Edit.editText?.text?.trim()
 
 
-        if (!emailinput?.isEmpty()!! && Patterns.EMAIL_ADDRESS.matcher(emailinput).matches()) {
+        if (emailinput?.isNotEmpty()!! && Patterns.EMAIL_ADDRESS.matcher(emailinput).matches()) {
             return true
         } else {
 
@@ -171,7 +157,7 @@ class LoginFragment : Fragment() {
 
 
 
-        if (!passinput?.isEmpty()!! && PASSWORD.matcher(passinput).matches()) {
+        if (passinput?.isNotEmpty()!! && PASSWORD.matcher(passinput).matches()) {
             //  Edit.error = "field cant be empty"
             return true
         } else {
@@ -185,17 +171,6 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun saveSneaker(sneaker: Sneaker) = CoroutineScope(Dispatchers.IO).launch {
-        try {
-            SneakerColection.add(sneaker).await()
-            // Toast.makeText(requireContext(),"Successfully added",Toast.LENGTH_LONG).show()
-
-        } catch (e: Exception) {
-
-        }
-
-
-    }
 
 
 

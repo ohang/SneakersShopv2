@@ -70,9 +70,6 @@
         <action
             android:id="@+id/action_bottomNavFragment_to_sneakerPageFragment"
             app:destination="@id/sneakerPageFragment" />
-        <argument
-            android:name="currentUser"
-            app:argType="com.ohanyan.goro.sneakersshop.db.User" />
         <action
             android:id="@+id/action_bottomNavFragment_to_myFavoriteFragment2"
             app:destination="@id/myFavoriteFragment2" />
@@ -82,6 +79,16 @@
         <action
             android:id="@+id/action_bottomNavFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_bottomNavFragment_self3"
+            app:destination="@id/bottomNavFragment" />
+        <argument
+            android:name="currentFragment"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <action
+            android:id="@+id/action_bottomNavFragment_to_myOrder"
+            app:destination="@id/myOrder" />
     </fragment>
     <fragment
         android:id="@+id/sneakerPageFragment"
@@ -100,4 +107,9 @@
         android:name="com.ohanyan.goro.sneakersshop.ui.sneakerslist.MyFavoriteFragment"
         android:label="fragment_my_favorite"
         tools:layout="@layout/fragment_my_favorite" />
+    <fragment
+        android:id="@+id/myOrder"
+        android:name="com.ohanyan.goro.sneakersshop.ui.MyOrder"
+        android:label="myorder_layout"
+        tools:layout="@layout/myorder_layout" />
 </navigation>
