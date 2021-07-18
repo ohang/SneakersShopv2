@@ -53,15 +53,12 @@ class RecyclerViewAdapter(
             price.text=item.price+" դրամ"
 
 
-
-
-
-
-
-
-
-
-
+            context?.let {
+                Glide
+                    .with(it.applicationContext)
+                    .load(newlist[0])
+                    .into(img)
+            }
 
 
 

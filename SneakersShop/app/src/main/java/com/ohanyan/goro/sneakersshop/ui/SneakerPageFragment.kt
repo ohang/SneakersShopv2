@@ -17,7 +17,9 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ohanyan.goro.sneakersshop.R
@@ -32,6 +34,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.regex.Pattern
 
 
 class SneakerPageFragment() : Fragment() {
@@ -41,12 +44,25 @@ class SneakerPageFragment() : Fragment() {
     lateinit var sneakerViewModel: SneakerViewModel
     private val UserColection = Firebase.firestore.collection("User")
     private val OrderCollection =Firebase.firestore.collection("Order")
+    private val SneakerCollectionMan=Firebase.firestore.collection("Sneakers/manwoman/Man")
+    private val SneakerCollectionWoman=Firebase.firestore.collection("Sneakers/manwoman/Woman")
+
 
     lateinit var order: Order
     lateinit var auth: FirebaseAuth
     lateinit var size: RadioButton
 
 
+    val textValid: Pattern = Pattern.compile(
+        "^" +
+
+                //    "(?=.*[a-zA-Z])" +      //any letter
+                "(?=.*[ա-ֆԱ-Ֆa-zA-Z0-9])" +      //any letter
+                ".{3,}" +               //at least 4 characters
+                "$"
+    )
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,6 +79,7 @@ class SneakerPageFragment() : Fragment() {
         val slideViewPager: ViewPager
         val tabIndicator: TabLayout
         val tvslide: TextView
+        val sneakeredit:ImageButton
 
 
         auth = FirebaseAuth.getInstance()
@@ -79,6 +96,7 @@ class SneakerPageFragment() : Fragment() {
         backButton = view.findViewById(R.id.backButtonID)
         slideViewPager = view.findViewById(R.id.mainImgid)
         tvslide = view.findViewById(R.id.slidetextid)
+        sneakeredit=view.findViewById(R.id.edit_sneak_id)
 
 
         //   val imgurls = arrayListOf(args.sneak.mainImgUrl, args.sneak.secImgUrl)
@@ -144,6 +162,15 @@ class SneakerPageFragment() : Fragment() {
             findNavController().navigate(R.id.action_sneakerPageFragment_to_bottomNavFragment)
         }
 
+
+        sneakeredit.setOnClickListener {
+            if(args.sneak.male=="Man"){
+                applychanges(SneakerCollectionMan)
+            }
+            else {
+                applychanges(SneakerCollectionWoman)
+            }
+        }
 
 
         buybutton.setOnClickListener {
@@ -332,6 +359,110 @@ class SneakerPageFragment() : Fragment() {
 
         } catch (e: Exception) {
         }
+    }
+
+
+    fun validate(text: TextInputEditText): Boolean {
+
+        val textinput = text.text?.trim()
+
+        if (!textinput?.isEmpty()!! && textValid.matcher(textinput).matches()) {
+            return true
+        } else {
+            text.error = "Սխալ"
+            return false
+        }
+    }
+
+    fun applychanges(ManWomanCol:CollectionReference){
+        val dialog = MaterialDialog(requireContext())
+            .noAutoDismiss()
+            .customView(R.layout.edit_sneaker_item)
+
+        val editButton = dialog.findViewById<Button>(R.id.applysneakerid)
+
+        val nameEdit: TextInputEditText =
+            dialog.findViewById<TextInputEditText>(R.id.nameeditid)
+        val sizesEdit: TextInputEditText =
+            dialog.findViewById<TextInputEditText>(R.id.sizeseditid)
+        val priceEdit: TextInputEditText =
+            dialog.findViewById<TextInputEditText>(R.id.updatepriceid)
+
+
+
+        CoroutineScope(Dispatchers.Main).launch {
+
+            val emailquery = ManWomanCol.whereEqualTo("name", args.sneak.name)
+                .get().await()
+            if (!emailquery.isEmpty()) {
+
+                nameEdit.setText(args.sneak.name)
+                sizesEdit.setText(args.sneak.sizes)
+                priceEdit.setText(args.sneak.price)
+            }
+            editButton.setOnClickListener {
+                if(validate(nameEdit)&&validate(sizesEdit)&&validate(priceEdit)){
+                    for (doc in emailquery) {
+                        try {
+                            val newSneaker = Sneaker(
+                                args.sneak.id,
+                                priceEdit.text.toString(),
+                                args.sneak.mainImgUrl,
+                                sizesEdit.text.toString(),
+                                args.sneak.male,
+                                nameEdit.text.toString()
+                            )
+
+
+                                ManWomanCol.document(doc.id).set(newSneaker)
+                                dialog.hide()
+                        } catch (e: Exception) {
+
+                        }
+                    }
+                }
+
+
+
+
+            }
+
+
+        }
+
+
+
+        dialog.show()
+
+
+    }
+
+    fun deletecurrentsneaker(ManWomanCol:CollectionReference){
+
+
+
+        CoroutineScope(Dispatchers.Main).launch {
+
+            val emailquery = ManWomanCol.whereEqualTo("name", args.sneak.name)
+                .get().await()
+
+                    for (doc in emailquery) {
+                        try {
+
+                            ManWomanCol.document(doc.id).delete()
+                        } catch (e: Exception) {
+
+                        }
+                    }
+
+
+
+        }
+
+
+
+
+
     }
 
 

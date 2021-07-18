@@ -270,6 +270,24 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.87" />
 
+        <ImageButton
+            android:id="@+id/edit_sneak_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            android:background="@drawable/md_transparent"
+            app:layout_constraintStart_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toTopOf="@+id/guideline17" />
+
+        <ImageButton
+            android:id="@+id/deletebuttonid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_orange"
+            android:background="@drawable/md_transparent"
+            app:layout_constraintStart_toEndOf="@+id/edit_sneak_id"
+            app:layout_constraintTop_toTopOf="@+id/guideline17" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -303,7 +321,6 @@
         android:layout_width="35dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/slideshape"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -312,8 +329,8 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
-        app:layout_constraintEnd_toEndOf="@+id/mainImgid" />
+        app:layout_constraintEnd_toEndOf="@+id/mainImgid"
+        tools:layout_editor_absoluteY="294dp" />
 
 
     <androidx.constraintlayout.widget.Guideline

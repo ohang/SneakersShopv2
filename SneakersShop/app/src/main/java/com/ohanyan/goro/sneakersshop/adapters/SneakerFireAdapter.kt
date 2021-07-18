@@ -56,6 +56,7 @@ OnItemClickListener) : FirestoreRecyclerAdapter<Sneaker, SneakerFireAdapter.Snea
                 .with(context.applicationContext)
                 .load(newlist[0])
                 .into(img)
+
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(
                     model,itemView,adapterPosition)
