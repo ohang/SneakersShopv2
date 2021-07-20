@@ -1,5 +1,7 @@
 package com.ohanyan.goro.sneakersshop.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -80,6 +82,7 @@ class SneakerPageFragment() : Fragment() {
         val tabIndicator: TabLayout
         val tvslide: TextView
         val sneakeredit:ImageButton
+        val deleteSneaker:ImageButton
 
 
         auth = FirebaseAuth.getInstance()
@@ -97,6 +100,7 @@ class SneakerPageFragment() : Fragment() {
         slideViewPager = view.findViewById(R.id.mainImgid)
         tvslide = view.findViewById(R.id.slidetextid)
         sneakeredit=view.findViewById(R.id.edit_sneak_id)
+        deleteSneaker=view.findViewById(R.id.deletebuttonid)
 
 
         //   val imgurls = arrayListOf(args.sneak.mainImgUrl, args.sneak.secImgUrl)
@@ -149,6 +153,12 @@ class SneakerPageFragment() : Fragment() {
 
         }
 
+        if(auth.currentUser?.email=="ohangor@gmail.com"){
+            sneakeredit.visibility=View.VISIBLE
+            deleteSneaker.visibility=View.VISIBLE
+
+        }
+
 
         checklike(likeButton)
 
@@ -169,6 +179,15 @@ class SneakerPageFragment() : Fragment() {
             }
             else {
                 applychanges(SneakerCollectionWoman)
+            }
+        }
+
+        deleteSneaker.setOnClickListener{
+            if(args.sneak.male=="Man"){
+                deletecurrentsneaker(SneakerCollectionMan)
+            }
+            else {
+                deletecurrentsneaker(SneakerCollectionWoman)
             }
         }
 
@@ -439,12 +458,17 @@ class SneakerPageFragment() : Fragment() {
 
     fun deletecurrentsneaker(ManWomanCol:CollectionReference){
 
+        val builder1: AlertDialog.Builder = AlertDialog.Builder(context)
+        builder1.setMessage("ջնջել տվյալ մոդելը՞")
+        builder1.setCancelable(true)
 
+        builder1.setPositiveButton(
+            "Այո",
+            DialogInterface.OnClickListener { dialog, id ->
+                CoroutineScope(Dispatchers.Main).launch {
 
-        CoroutineScope(Dispatchers.Main).launch {
-
-            val emailquery = ManWomanCol.whereEqualTo("name", args.sneak.name)
-                .get().await()
+                    val emailquery = ManWomanCol.whereEqualTo("name", args.sneak.name)
+                        .get().await()
 
                     for (doc in emailquery) {
                         try {
@@ -457,7 +481,19 @@ class SneakerPageFragment() : Fragment() {
 
 
 
-        }
+                }
+                dialog.cancel() })
+
+        builder1.setNegativeButton(
+            "Ոչ",
+            DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+
+        val alert11: AlertDialog = builder1.create()
+        alert11.show()
+
+
+
+
 
 
 

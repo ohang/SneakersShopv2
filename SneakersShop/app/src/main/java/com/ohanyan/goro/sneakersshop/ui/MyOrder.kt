@@ -47,13 +47,12 @@ class MyOrder:Fragment() {
             if (!it.isEmpty) {
                 for (doc in it) {
                     val query: Query =UserColection.document(doc.id).collection("MyOrder")
-                    var     options = FirestoreRecyclerOptions.Builder<Order>()
+                    val options = FirestoreRecyclerOptions.Builder<Order>()
                         .setQuery(query, Order::class.java)
                         .build()
 
 
                     fradapter = MyOrdersAdapter(requireContext(), options)
-
 
                     MyOrders.setHasFixedSize(true)
                     MyOrders.layoutManager = LinearLayoutManager(requireContext())

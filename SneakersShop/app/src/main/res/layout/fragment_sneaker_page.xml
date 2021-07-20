@@ -277,21 +277,25 @@
             android:id="@+id/edit_sneak_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/md_transparent"
             android:src="@drawable/ic_edit"
-            app:layout_constraintStart_toStartOf="@+id/guideline15"
-            app:layout_constraintTop_toTopOf="@+id/guideline17" />
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/deletebuttonid"
+            app:layout_constraintTop_toTopOf="@+id/deletebuttonid"
+            tools:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/deletebuttonid"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="24dp"
             android:background="@drawable/md_transparent"
             android:src="@drawable/ic_baseline_delete_24"
-            app:layout_constraintBottom_toBottomOf="@+id/edit_sneak_id"
-            app:layout_constraintStart_toEndOf="@+id/edit_sneak_id"
-            app:layout_constraintTop_toTopOf="@+id/guideline17" />
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/guideline22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline16"
+            tools:visibility="invisible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -325,6 +329,7 @@
         android:layout_width="35dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/slideshape"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -333,8 +338,8 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/mainImgid"
-        tools:layout_editor_absoluteY="294dp" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline21"
+        app:layout_constraintEnd_toEndOf="@+id/mainImgid" />
 
 
     <androidx.constraintlayout.widget.Guideline
